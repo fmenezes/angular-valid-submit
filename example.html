@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <!-- JQuery -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- Angular -->
+    <script src="bower_components/angular/angular.js"></script>
+    <!-- ngValidSubmit -->
+    <script src="index.js"></script>
+  </head>
+  <body ng-app="TestApp" ng-controller="TestCtrl">
+    <form name="form1" ng-valid-submit="submit()">
+      <p>
+        <label for="test">Test</label>
+        <input type="text" id="test" name="test" ng-model="test" required />
+        <span ng-if="form1.$feedback && form1.test.$invalid" style="color: red">Required</span>
+      </p>
+      <button type="submit">Send</button>
+      <button type="button" ng-valid-click="submit()">Other Send</button>
+    </form>
+    <script type="text/javascript">
+      angular.module('TestApp', ['ngValidSubmit'])
+        .controller('TestCtrl', function ($scope) {
+          $scope.submit = function () {
+            alert($scope.test);
+          };
+        });
+    </script>
+  </body>
+</html>
