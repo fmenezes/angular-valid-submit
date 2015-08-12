@@ -20,7 +20,7 @@ angular.module('ngValidSubmit', [])
       link: function (scope, element, attr) {
         angular.element(element).bind('click', function (e) {
           e.preventDefault();
-          var formName = angular.element(element).closest('form').attr('name');
+          var formName = angular.element(element).closest('form, ng-form').attr('name');
           scope[formName].$feedback = true;
           if (scope[formName].$valid) {
             scope.$eval(attr.ngValidClick);
